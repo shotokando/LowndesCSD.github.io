@@ -277,6 +277,7 @@
 	<script type="text/javascript">
 
 		var d = new Date();
+		
 		var month = new Array();
 			month[0] = "January";
 			month[1] = "February";
@@ -290,8 +291,17 @@
 			month[9] = "October";
 			month[10] = "November";
 			month[11] = "December";
+			
 		var now = month[d.getMonth()];
-		var next = month[d.getMonth()+1];
+		
+		if (d.getMonth() = 11) 
+		{
+			var next = month[0];
+		}
+		else
+		{
+			var next = month[d.getMonth()+1];
+		}
 		
 		var curbfurl = "menu/" + now + " k_12 breakfast.htm";
 		var curk5url = "menu/" + now + " k_5 Lunch.htm";
