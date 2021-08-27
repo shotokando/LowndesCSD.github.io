@@ -260,13 +260,13 @@
 							<b>December</b>
 							<BR>
 							<BR>
-							<a id="Decbfmenu" href="menu/December k_12 breakfast.htm">Breakfast</a>
+							<a id="Decbfmenu" href="a">Breakfast</a>
 							<br>
-							<a id="Deck5menu" href="menu/December k_5 Lunch.htm">K-5 Lunch</a>
+							<a id="Deck5menu" href="b">K-5 Lunch</a>
 							<br>
-							<a id="Dec68menu" href="menu/6_8 December Lunch.htm">6-8 Lunch</a>
+							<a id="Dec68menu" href="c">6-8 Lunch</a>
 							<br>
-							<a id="Dec912menu" href="menu/9_12 December Lunch.htm">9-12 Lunch</a>
+							<a id="Dec912menu" href="d">9-12 Lunch</a>
 							<BR>
 						</FONT>
 					</p>
@@ -326,25 +326,32 @@
 
 
 	</script>
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js">
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js">
 	</script> 
 	<script type="text/javascript">
 
 
 		$.fn.checkPageExists = function(defaultUrl){
 			$.each(this, function(){
-				var $link = $(this);
+				var link = $(this);
 				$.ajax({
 					url: $link.attr("href"),
-					success: function(){$link.attr("href", "");},
-					error: function(){$link.attr("href", defaultUrl);}
+					type: 'HEAD',
+					error: function() 
+					{
+						$link.attr("href", "File doesn't exists");
+					},
 				});
 			});
 		};
-
+		
 		$(document).ready(function(){
-			$("a").checkPageExists("index.html");
+			$("Novbfmenu").checkPageExists("#Novbfmenu");
+			$("Novk5menu").checkPageExists("#Novk5menu");
+			$("Nov68menu").checkPageExists("menu/6_8 November Lunch.htm");
+			$("Nov912menu").checkPageExists("menu/9_12 November Lunch.htm");
 		});
+
 
 
 	</script>
