@@ -331,26 +331,19 @@
 	<script type="text/javascript">
 
 
-		var defaultUrl = "menu/ThisDoesNotWork.htm"
 		$.fn.checkPageExists = function(defaultUrl){
 			$.each(this, function(){
 				var $link = $(this);
 				$.ajax({
 					url: $link.attr("href"),
-					error: function(){
-						$link.attr("href", defaultUrl);
-					}
+					success: function(){$link.attr("href", "");},
+					error: function(){$link.attr("href", defaultUrl);}
 				});
 			});
 		};
 
 		$(document).ready(function(){
-			$("a").checkPageExists(
-            "menu/February k_12 breakfast.htm",
-            "menu/February k_5 Lunch.htm",
-            "menu/6_8 February Lunch.htm",
-            "menu/9_12 February Lunch.htm"
-            );
+			$("a").checkPageExists("index.html");
 		});
 
 
