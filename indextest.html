@@ -1,6 +1,14 @@
 <html>
 	<head>
 		<TITLE>Lowndes County School District Breakfast/Lunch Menus</TITLE>
+		<style>
+			#output 
+			{
+				color: green;
+				font-size: 20px;
+				font-weight: bold;
+			}
+		</style>
 	</head>
 	<body>
 		<H1 align="center">
@@ -273,6 +281,19 @@
 				</TD>
 			</tr>
 		</TABLE>
+		
+		<br><br>
+		<label id="File_Path">
+			<b>Do it: </b>
+		</label>
+		<input type="text" id="File_URL">
+		<button id="Check_File" onclick="checkURL()">
+			Check File
+		</button>
+  
+		<p id="output">What</p>
+		
+		
 	</body>
 	<script type="text/javascript">
 
@@ -331,26 +352,23 @@
 	<script type="text/javascript">
 
 
-		$.fn.checkPageExists = function(defaultUrl){
-			$.each(this, function(){
-				var link = $(this);
-				$.ajax({
-					url: $link.attr("href"),
-					type: 'HEAD',
-					error: function() 
-					{
-						$link.attr("href", "File doesn't exists");
-					},
-				});
-			});
-		};
-		
-		$(document).ready(function(){
-			$("Novbfmenu").checkPageExists("#Novbfmenu");
-			$("Novk5menu").checkPageExists("#Novk5menu");
-			$("Nov68menu").checkPageExists("menu/6_8 November Lunch.htm");
-			$("Nov912menu").checkPageExists("menu/9_12 November Lunch.htm");
-		});
+		function checkUrl(url) {
+			var request = false;
+			if (window.XMLHttpRequest) {
+                request = new XMLHttpRequest;
+			} else if (window.ActiveXObject) {
+                request = new ActiveXObject("Microsoft.XMLHttp");
+			}
+
+			if (request) {
+                request.open("HEAD", url);
+                if (request.status == 200) { return true; }
+			}
+
+			return false;
+		}
+
+
 
 
 
