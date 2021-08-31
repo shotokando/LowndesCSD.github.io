@@ -19,11 +19,9 @@
 		<TABLE BORDER CELLPADDING=3 WIDTH=570 ALIGN=CENTER>
 			<tr>
 				<TD VALIGN="TOP" WIDTH="25%">
+					<h1 id="curYear" align="center"></h1>
 					<p align="center">
 						<FONT FACE="Arial" SIZE=2 COLOR=#000000 STYLE="font:14pt Arial">
-							<BR>
-							<b>Current Month</b>
-							<BR>
 							<BR>
 							<a id="curbfmenu" href="">Breakfast</a>
 							<br>
@@ -37,11 +35,9 @@
 					</p>
 				</TD>
 				<TD VALIGN="TOP" WIDTH="25%">
+					<h1 id="nexYear" align="center"></h1>
 					<p align="center">
 						<FONT FACE="Arial" SIZE=2 COLOR=#000000 STYLE="font:14pt Arial">
-							<BR>
-							<b>Next Month</b>
-							<BR>
 							<BR>
 							<a id="nextbfmenu" href="">Breakfast</a>
 							<br>
@@ -66,9 +62,9 @@
 							<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;January&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
 							<BR>
 							<BR>
-							<a id="Janbfmenu" href="menu/January k_12 breakfast.htm">Breakfast</a>
+							<a id="Janbfmenu" href="menu/k_12 January Breakfast.htm">Breakfast</a>
 							<br>
-							<a id="Jank5menu" href="menu/January k_5 Lunch.htm">K-5 Lunch</a>
+							<a id="Jank5menu" href="menu/k_5 January Lunch.htm">K-5 Lunch</a>
 							<br>
 							<a id="Jan68menu" href="menu/6_8 January Lunch.htm">6-8 Lunch</a>
 							<br>
@@ -194,9 +190,9 @@
 							<b>August</b>
 							<BR>
 							<BR>
-							<a id="Augbfmenu" href="menu/August k_12 breakfast.htm">Breakfast</a>
+							<a id="Augbfmenu" href="menu/k_12 August Breakfast.htm">Breakfast</a>
 							<br>
-							<a id="Augk5menu" href="menu/August k_5 Lunch.htm">K-5 Lunch</a>
+							<a id="Augk5menu" href="menu/k_5 August Lunch.htm">K-5 Lunch</a>
 							<br>
 							<a id="Aug68menu" href="menu/6_8 August Lunch.htm">6-8 Lunch</a>
 							<br>
@@ -268,30 +264,20 @@
 							<b>December</b>
 							<BR>
 							<BR>
-							<a id="Decbfmenu" href="a">Breakfast</a>
+							<a id="Decbfmenu" href="menu/December k_12 breakfast.htm">Breakfast</a>
 							<br>
-							<a id="Deck5menu" href="b">K-5 Lunch</a>
+							<a id="Deck5menu" href="menu/December k_5 Lunch.htm">K-5 Lunch</a>
 							<br>
-							<a id="Dec68menu" href="c">6-8 Lunch</a>
+							<a id="Dec68menu" href="menu/6_8 December Lunch.htm">6-8 Lunch</a>
 							<br>
-							<a id="Dec912menu" href="d">9-12 Lunch</a>
+							<a id="Dec912menu" href="menu/9_12 December Lunch.htm">9-12 Lunch</a>
 							<BR>
 						</FONT>
 					</p>
 				</TD>
 			</tr>
 		</TABLE>
-		
-		<br><br>
-		<label id="File_Path">
-			<b>Do it: </b>
-		</label>
-		<input type="text" id="File_URL">
-		<button id="Check_File" onclick="checkURL()">
-			Check File
-		</button>
-  
-		<p id="output">What</p>
+
 		
 		
 	</body>
@@ -314,14 +300,17 @@
 			month[11] = "December";
 			
 		var now = month[d.getMonth()];
+		var nowYear = d.getFullYear();
 		
 		if (d.getMonth() == 11) 
 		{
 			var next = month[0];
+			var nextYear = d.getFullYear()+1;
 		}
 		else
 		{
 			var next = month[d.getMonth()+1];
+			var nextYear = d.getFullYear();
 		}
 		
 		var curbfurl = "menu/" + now + " k_12 breakfast.htm";
@@ -343,6 +332,9 @@
 		document.getElementById("nextk5menu").href = nextk5url;
 		document.getElementById("next68menu").href = next68url;
 		document.getElementById("next912menu").href = next912url;
+		
+		document.getElementById("curYear").innerHTML = now + " " +nowYear;
+		document.getElementById("nexYear").innerHTML = next + " " + nextYear;
 		
 
 
@@ -369,8 +361,177 @@
 		}
 
 
+		if (checkUrl(document.getElementById("Janbfmenu").href)) {var Janbfurl = "menu/k_12 January Breakfast.htm"; var Janbfval = "Breakfast";} else {var Janbfurl = "NoFile"; var Janbfval = "";}
+		if (checkUrl(document.getElementById("Jank5menu").href)) {var Jank5url = "menu/k_5 January Lunch.htm"; var Jank5val = "K-5 Lunch";} else {var Jank5url = "NoFile"; var Jank5val = "";}
+		if (checkUrl(document.getElementById("Jan68menu").href)) {var Jan68url = "menu/6_8 January Lunch.htm"; var Jan68val = "6-8 Lunch";} else {var Jan68url = "NoFile"; var Jan68val = "";}
+		if (checkUrl(document.getElementById("Jan912menu").href)) {var Jan912url = "menu/9_12 January Lunch.htm"; var Jan912val = "9-12 Lunch";} else {var Jan912url = "NoFile"; var Jan912val = "";}
+		
+		if (checkUrl(document.getElementById("Febbfmenu").href)) {var Febbfurl = "menu/k_12 February Breakfast.htm"; var Febbfval = "Breakfast";} else {var Febbfurl = "NoFile"; var Febbfval = "";}
+		if (checkUrl(document.getElementById("Febk5menu").href)) {var Febk5url = "menu/k_5 February Lunch.htm"; var Febk5val = "K-5 Lunch";} else {var Febk5url = "NoFile"; var Febk5val = "";}
+		if (checkUrl(document.getElementById("Feb68menu").href)) {var Feb68url = "menu/6_8 February Lunch.htm"; var Feb68val = "6-8 Lunch";} else {var Feb68url = "NoFile"; var Feb68val = "";}
+		if (checkUrl(document.getElementById("Feb912menu").href)) {var Feb912url = "menu/9_12 February Lunch.htm"; var Feb912val = "9-12 Lunch";} else {var Feb912url = "NoFile"; var Feb912val = "";}
+		
+		if (checkUrl(document.getElementById("Marbfmenu").href)) {var Marbfurl = "menu/k_12 March Breakfast.htm"; var Marbfval = "Breakfast";} else {var Marbfurl = "NoFile"; var Marbfval = "";}
+		if (checkUrl(document.getElementById("Mark5menu").href)) {var Mark5url = "menu/k_5 March Lunch.htm"; var Mark5val = "K-5 Lunch";} else {var Mark5url = "NoFile"; var Mark5val = "";}
+		if (checkUrl(document.getElementById("Mar68menu").href)) {var Mar68url = "menu/6_8 March Lunch.htm"; var Mar68val = "6-8 Lunch";} else {var Mar68url = "NoFile"; var Mar68val = "";}
+		if (checkUrl(document.getElementById("Mar912menu").href)) {var Mar912url = "menu/9_12 March Lunch.htm"; var Mar912val = "9-12 Lunch";} else {var Mar912url = "NoFile"; var Mar912val = "";}
+		
+		if (checkUrl(document.getElementById("Aprbfmenu").href)) {var Aprbfurl = "menu/k_12 April Breakfast.htm"; var Aprbfval = "Breakfast";} else {var Aprbfurl = "NoFile"; var Aprbfval = "";}
+		if (checkUrl(document.getElementById("Aprk5menu").href)) {var Aprk5url = "menu/k_5 April Lunch.htm"; var Aprk5val = "K-5 Lunch";} else {var Aprk5url = "NoFile"; var Aprk5val = "";}
+		if (checkUrl(document.getElementById("Apr68menu").href)) {var Apr68url = "menu/6_8 April Lunch.htm"; var Apr68val = "6-8 Lunch";} else {var Apr68url = "NoFile"; var Apr68val = "";}
+		if (checkUrl(document.getElementById("Apr912menu").href)) {var Apr912url = "menu/9_12 April Lunch.htm"; var Apr912val = "9-12 Lunch";} else {var Apr912url = "NoFile"; var Apr912val = "";}
+		
+		if (checkUrl(document.getElementById("Maybfmenu").href)) {var Maybfurl = "menu/k_12 May Breakfast.htm"; var Maybfval = "Breakfast";} else {var Maybfurl = "NoFile"; var Maybfval = "";}
+		if (checkUrl(document.getElementById("Mayk5menu").href)) {var Mayk5url = "menu/k_5 May Lunch.htm"; var Mayk5val = "K-5 Lunch";} else {var Mayk5url = "NoFile"; var Mayk5val = "";}
+		if (checkUrl(document.getElementById("May68menu").href)) {var May68url = "menu/6_8 May Lunch.htm"; var May68val = "6-8 Lunch";} else {var May68url = "NoFile"; var May68val = "";}
+		if (checkUrl(document.getElementById("May912menu").href)) {var May912url = "menu/9_12 May Lunch.htm"; var May912val = "9-12 Lunch";} else {var May912url = "NoFile"; var May912val = "";}
+		
+		if (checkUrl(document.getElementById("Junbfmenu").href)) {var Junbfurl = "menu/k_12 June Breakfast.htm"; var Junbfval = "Breakfast";} else {var Junbfurl = "NoFile"; var Junbfval = "";}
+		if (checkUrl(document.getElementById("Junk5menu").href)) {var Junk5url = "menu/k_5 June Lunch.htm"; var Junk5val = "K-5 Lunch";} else {var Junk5url = "NoFile"; var Junk5val = "";}
+		if (checkUrl(document.getElementById("Jun68menu").href)) {var Jun68url = "menu/6_8 June Lunch.htm"; var Jun68val = "6-8 Lunch";} else {var Jun68url = "NoFile"; var Jun68val = "";}
+		if (checkUrl(document.getElementById("Jun912menu").href)) {var Jun912url = "menu/9_12 June Lunch.htm"; var Jun912val = "9-12 Lunch";} else {var Jun912url = "NoFile"; var Jun912val = "";}
+		
+		if (checkUrl(document.getElementById("Julbfmenu").href)) {var Julbfurl = "menu/k_12 July Breakfast.htm"; var Julbfval = "Breakfast";} else {var Julbfurl = "NoFile"; var Julbfval = "";}
+		if (checkUrl(document.getElementById("Julk5menu").href)) {var Julk5url = "menu/k_5 July Lunch.htm"; var Julk5val = "K-5 Lunch";} else {var Julk5url = "NoFile"; var Julk5val = "";}
+		if (checkUrl(document.getElementById("Jul68menu").href)) {var Jul68url = "menu/6_8 July Lunch.htm"; var Jul68val = "6-8 Lunch";} else {var Jul68url = "NoFile"; var Jul68val = "";}
+		if (checkUrl(document.getElementById("Jul912menu").href)) {var Jul912url = "menu/9_12 July Lunch.htm"; var Jul912val = "9-12 Lunch";} else {var Jul912url = "NoFile"; var Jul912val = "";}
+		
+		if (checkUrl(document.getElementById("Augbfmenu").href)) {var Augbfurl = "menu/k_12 August Breakfast.htm"; var Augbfval = "Breakfast";} else {var Augbfurl = "NoFile"; var Augbfval = "";}
+		if (checkUrl(document.getElementById("Augk5menu").href)) {var Augk5url = "menu/k_5 August Lunch.htm"; var Augk5val = "K-5 Lunch";} else {var Augk5url = "NoFile"; var Augk5val = "";}
+		if (checkUrl(document.getElementById("Aug68menu").href)) {var Aug68url = "menu/6_8 August Lunch.htm"; var Aug68val = "6-8 Lunch";} else {var Aug68url = "NoFile"; var Aug68val = "";}
+		if (checkUrl(document.getElementById("Aug912menu").href)) {var Aug912url = "menu/9_12 August Lunch.htm"; var Aug912val = "9-12 Lunch";} else {var Aug912url = "NoFile"; var Aug912val = "";}
+		
+		if (checkUrl(document.getElementById("Sepbfmenu").href)) {var Sepbfurl = "menu/k_12 September Breakfast.htm"; var Sepbfval = "Breakfast";} else {var Sepbfurl = "NoFile"; var Sepbfval = "";}
+		if (checkUrl(document.getElementById("Sepk5menu").href)) {var Sepk5url = "menu/k_5 September Lunch.htm"; var Sepk5val = "K-5 Lunch";} else {var Sepk5url = "NoFile"; var Sepk5val = "";}
+		if (checkUrl(document.getElementById("Sep68menu").href)) {var Sep68url = "menu/6_8 September Lunch.htm"; var Sep68val = "6-8 Lunch";} else {var Sep68url = "NoFile"; var Sep68val = "";}
+		if (checkUrl(document.getElementById("Sep912menu").href)) {var Sep912url = "menu/9_12 September Lunch.htm"; var Sep912val = "9-12 Lunch";} else {var Sep912url = "NoFile"; var Sep912val = "";}
+		
+		if (checkUrl(document.getElementById("Octbfmenu").href)) {var Octbfurl = "menu/k_12 October Breakfast.htm"; var Octbfval = "Breakfast";} else {var Octbfurl = "NoFile"; var Octbfval = "";}
+		if (checkUrl(document.getElementById("Octk5menu").href)) {var Octk5url = "menu/k_5 October Lunch.htm"; var Octk5val = "K-5 Lunch";} else {var Octk5url = "NoFile"; var Octk5val = "";}
+		if (checkUrl(document.getElementById("Oct68menu").href)) {var Oct68url = "menu/6_8 October Lunch.htm"; var Oct68val = "6-8 Lunch";} else {var Oct68url = "NoFile"; var Oct68val = "";}
+		if (checkUrl(document.getElementById("Oct912menu").href)) {var Oct912url = "menu/9_12 October Lunch.htm"; var Oct912val = "9-12 Lunch";} else {var Oct912url = "NoFile"; var Oct912val = "";}
+		
+		if (checkUrl(document.getElementById("Novbfmenu").href)) {var Novbfurl = "menu/k_12 November Breakfast.htm"; var Novbfval = "Breakfast";} else {var Novbfurl = "NoFile"; var Novbfval = "";}
+		if (checkUrl(document.getElementById("Novk5menu").href)) {var Novk5url = "menu/k_5 November Lunch.htm"; var Novk5val = "K-5 Lunch";} else {var Novk5url = "NoFile"; var Novk5val = "";}
+		if (checkUrl(document.getElementById("Nov68menu").href)) {var Nov68url = "menu/6_8 November Lunch.htm"; var Nov68val = "6-8 Lunch";} else {var Nov68url = "NoFile"; var Nov68val = "";}
+		if (checkUrl(document.getElementById("Nov912menu").href)) {var Nov912url = "menu/9_12 November Lunch.htm"; var Nov912val = "9-12 Lunch";} else {var Nov912url = "NoFile"; var Nov912val = "";}
+		
+		if (checkUrl(document.getElementById("Decbfmenu").href)) {var Decbfurl = "menu/k_12 December Breakfast.htm"; var Decbfval = "Breakfast";} else {var Decbfurl = "NoFile"; var Decbfval = "";}
+		if (checkUrl(document.getElementById("Deck5menu").href)) {var Deck5url = "menu/k_5 December Lunch.htm"; var Deck5val = "K-5 Lunch";} else {var Deck5url = "NoFile"; var Deck5val = "";}
+		if (checkUrl(document.getElementById("Dec68menu").href)) {var Dec68url = "menu/6_8 December Lunch.htm"; var Dec68val = "6-8 Lunch";} else {var Dec68url = "NoFile"; var Dec68val = "";}
+		if (checkUrl(document.getElementById("Dec912menu").href)) {var Dec912url = "menu/9_12 December Lunch.htm"; var Dec912val = "9-12 Lunch";} else {var Dec912url = "NoFile"; var Dec912val = "";}
+		
 
 
+
+		document.getElementById("Janbfmenu").href = Janbfurl;
+		document.getElementById("Janbfmenu").innerHTML = Janbfval;
+		document.getElementById("Jank5menu").href = Jank5url;
+		document.getElementById("Jank5menu").innerHTML = Jank5val;
+		document.getElementById("Jan68menu").href = Jan68url;
+		document.getElementById("Jan68menu").innerHTML = Jan68val;
+		document.getElementById("Jan912menu").href = Jan912url;
+		document.getElementById("Jan912menu").innerHTML = Jan912val;
+		
+		document.getElementById("Febbfmenu").href = Febbfurl;
+		document.getElementById("Febbfmenu").innerHTML = Febbfval;
+		document.getElementById("Febk5menu").href = Febk5url;
+		document.getElementById("Febk5menu").innerHTML = Febk5val;
+		document.getElementById("Feb68menu").href = Feb68url;
+		document.getElementById("Feb68menu").innerHTML = Feb68val;
+		document.getElementById("Feb912menu").href = Feb912url;
+		document.getElementById("Feb912menu").innerHTML = Feb912val;
+		
+		document.getElementById("Marbfmenu").href = Marbfurl;
+		document.getElementById("Marbfmenu").innerHTML = Marbfval;
+		document.getElementById("Mark5menu").href = Mark5url;
+		document.getElementById("Mark5menu").innerHTML = Mark5val;
+		document.getElementById("Mar68menu").href = Mar68url;
+		document.getElementById("Mar68menu").innerHTML = Mar68val;
+		document.getElementById("Mar912menu").href = Mar912url;
+		document.getElementById("Mar912menu").innerHTML = Mar912val;
+		
+		document.getElementById("Aprbfmenu").href = Aprbfurl;
+		document.getElementById("Aprbfmenu").innerHTML = Aprbfval;
+		document.getElementById("Aprk5menu").href = Aprk5url;
+		document.getElementById("Aprk5menu").innerHTML = Aprk5val;
+		document.getElementById("Apr68menu").href = Apr68url;
+		document.getElementById("Apr68menu").innerHTML = Apr68val;
+		document.getElementById("Apr912menu").href = Apr912url;
+		document.getElementById("Apr912menu").innerHTML = Apr912val;
+		
+		document.getElementById("Maybfmenu").href = Maybfurl;
+		document.getElementById("Maybfmenu").innerHTML = Maybfval;
+		document.getElementById("Mayk5menu").href = Mayk5url;
+		document.getElementById("Mayk5menu").innerHTML = Mayk5val;
+		document.getElementById("May68menu").href = May68url;
+		document.getElementById("May68menu").innerHTML = May68val;
+		document.getElementById("May912menu").href = May912url;
+		document.getElementById("May912menu").innerHTML = May912val;
+		
+		document.getElementById("Junbfmenu").href = Junbfurl;
+		document.getElementById("Junbfmenu").innerHTML = Junbfval;
+		document.getElementById("Junk5menu").href = Junk5url;
+		document.getElementById("Junk5menu").innerHTML = Junk5val;
+		document.getElementById("Jun68menu").href = Jun68url;
+		document.getElementById("Jun68menu").innerHTML = Jun68val;
+		document.getElementById("Jun912menu").href = Jun912url;
+		document.getElementById("Jun912menu").innerHTML = Jun912val;
+		
+		document.getElementById("Julbfmenu").href = Julbfurl;
+		document.getElementById("Julbfmenu").innerHTML = Julbfval;
+		document.getElementById("Julk5menu").href = Julk5url;
+		document.getElementById("Julk5menu").innerHTML = Julk5val;
+		document.getElementById("Jul68menu").href = Jul68url;
+		document.getElementById("Jul68menu").innerHTML = Jul68val;
+		document.getElementById("Jul912menu").href = Jul912url;
+		document.getElementById("Jul912menu").innerHTML = Jul912val;
+		
+		document.getElementById("Augbfmenu").href = Augbfurl;
+		document.getElementById("Augbfmenu").innerHTML = Augbfval;
+		document.getElementById("Augk5menu").href = Augk5url;
+		document.getElementById("Augk5menu").innerHTML = Augk5val;
+		document.getElementById("Aug68menu").href = Aug68url;
+		document.getElementById("Aug68menu").innerHTML = Aug68val;
+		document.getElementById("Aug912menu").href = Aug912url;
+		document.getElementById("Aug912menu").innerHTML = Aug912val;
+		
+		document.getElementById("Sepbfmenu").href = Sepbfurl;
+		document.getElementById("Sepbfmenu").innerHTML = Sepbfval;
+		document.getElementById("Sepk5menu").href = Sepk5url;
+		document.getElementById("Sepk5menu").innerHTML = Sepk5val;
+		document.getElementById("Sep68menu").href = Sep68url;
+		document.getElementById("Sep68menu").innerHTML = Sep68val;
+		document.getElementById("Sep912menu").href = Sep912url;
+		document.getElementById("Sep912menu").innerHTML = Sep912val;
+		
+		document.getElementById("Octbfmenu").href = Octbfurl;
+		document.getElementById("Octbfmenu").innerHTML = Octbfval;
+		document.getElementById("Octk5menu").href = Octk5url;
+		document.getElementById("Octk5menu").innerHTML = Octk5val;
+		document.getElementById("Oct68menu").href = Oct68url;
+		document.getElementById("Oct68menu").innerHTML = Oct68val;
+		document.getElementById("Oct912menu").href = Oct912url;
+		document.getElementById("Oct912menu").innerHTML = Oct912val;
+		
+		document.getElementById("Novbfmenu").href = Novbfurl;
+		document.getElementById("Novbfmenu").innerHTML = Novbfval;
+		document.getElementById("Novk5menu").href = Novk5url;
+		document.getElementById("Novk5menu").innerHTML = Novk5val;
+		document.getElementById("Nov68menu").href = Nov68url;
+		document.getElementById("Nov68menu").innerHTML = Nov68val;
+		document.getElementById("Nov912menu").href = Nov912url;
+		document.getElementById("Nov912menu").innerHTML = Nov912val;
+		
+		document.getElementById("Decbfmenu").href = Decbfurl;
+		document.getElementById("Decbfmenu").innerHTML = Decbfval;
+		document.getElementById("Deck5menu").href = Deck5url;
+		document.getElementById("Deck5menu").innerHTML = Deck5val;
+		document.getElementById("Dec68menu").href = Dec68url;
+		document.getElementById("Dec68menu").innerHTML = Dec68val;
+		document.getElementById("Dec912menu").href = Dec912url;
+		document.getElementById("Dec912menu").innerHTML = Dec912val;
+		
 
 	</script>
 </html>
